@@ -109,6 +109,8 @@ Custom keys for specific parser implementations must start with `X-`.
 
 If you adopt this format and plan to keep datasets around for a long period of time, it may be beneficial to take a copy of this document and store it alongside the dataset spec file. 
 
+The parquet file format requires relatively complicated software to parse. If using the parquet file format during the course of the ML project, consider exporting it as CSV for archiving. 
+
 ### Cloud storage systems
 
 While this specification emphasizes loose files on a file system as the storage mechanism, it can still be used with object storage or even plain HTTP retrieval. While this would technically constitute an extension to this specification, there is nothing stopping particular users from using an `https://` URI in the root field, as long as their spec file parser knew how to handle it. All the other rules would remain as is. While object storage systems typically have a way of enumerating all objects at a certain prefix, plain HTTP servers often do not, or if they do, do not necessarily return the result in a parser-friendly format. Usage with a metadata index in this case is recommended so there is an explicit source  of truth for all data prefixes. 
